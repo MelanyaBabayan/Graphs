@@ -73,7 +73,7 @@ TreeNode* BinaryTree::getRoot(){
 
 void BinaryTree::insert(int val){
     TreeNode* new_node=new TreeNode(val);
-    if(root!=nullptr) {
+    if(root==nullptr) {
         root=new_node;
         return;
     }
@@ -101,7 +101,7 @@ void BinaryTree::insert(int val){
 }
 
 void BinaryTree::inorder(TreeNode* root){
-    if(root!=nullptr){
+    if(root==nullptr){
         return;
     }
     inorder(root->left);
@@ -110,7 +110,7 @@ void BinaryTree::inorder(TreeNode* root){
 }
 
 void BinaryTree::preorder(TreeNode* root){
-    if(root!=nullptr){
+    if(root==nullptr){
         return;
     }
     std::cout<<root->val<<" ";
@@ -119,7 +119,7 @@ void BinaryTree::preorder(TreeNode* root){
 }
 
 void BinaryTree::postorder(TreeNode* root){
-    if(root!=nullptr){
+    if(root==nullptr){
         return;
     }
     postorder(root->left);
@@ -146,7 +146,7 @@ void BinaryTree::postorderTraversal(){
 }
 
 int BinaryTree::height(TreeNode* root){
-    if(root!=nullptr){
+    if(root==nullptr){
         return 0;
     }
     return 1 + std::max(height(root->left), height(root->right));
@@ -158,7 +158,7 @@ int BinaryTree::height(){
 
 
 void BinaryTree::levelOrderTraversal(){
-    if(root!=nullptr){
+    if(root==nullptr){
         return;
     }
     std::queue<TreeNode*> q;
@@ -181,7 +181,7 @@ void BinaryTree::levelOrderTraversal(){
 }
 
 int BinaryTree::count_leaves(TreeNode* root){
-    if (root!=nullptr){
+    if (root==nullptr){
         return;
     }
     if(root->left!=nullptr && root->right!=nullptr){
@@ -195,7 +195,7 @@ int BinaryTree::count_leaves(){
 }
 
 bool BinaryTree::findbyvalue(TreeNode* root, int val) {
-    if(root!=nullptr){
+    if(root==nullptr){
         return false;
     }
     if(root->val==val){
