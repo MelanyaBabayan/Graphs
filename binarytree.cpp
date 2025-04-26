@@ -184,7 +184,7 @@ int BinaryTree::count_leaves(TreeNode* root){
     if (root==nullptr){
         return;
     }
-    if(root->left!=nullptr && root->right!=nullptr){
+    if(root->left==nullptr && root->right==nullptr){
         return 1;
     }
     return count_leaves(root->left) + count_leaves(root->right);
