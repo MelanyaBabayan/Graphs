@@ -39,6 +39,8 @@ public:
     bool findbyvalue(int );
     void deleteTree(TreeNode* );
     void deleteTree();
+    bool isBalanced(TreeNode* );
+    BinaryTree operator+(const BinaryTree& other);
 };
 
 BinaryTree::BinaryTree(){
@@ -220,4 +222,48 @@ void BinaryTree::deleteTree(TreeNode* root){
 void BinaryTree::deleteTree(){
     deleteTree(root);
     root=nullptr;
+}
+
+bool BinaryTree::isBalanced(TreeNode* root){
+    if(root==nullptr){
+        return true;
+    }
+    int lefth=height(root->left);
+    int righth=height(root->right);
+    if(std::abs(lefth-righth)<=1&& isBalanced(root->right)&&isBalanced(root->left)){
+        return true;
+    }
+    return false;
+} 
+
+BinaryTree BinaryTree::operator+(const BinaryTree& other){
+    BinaryTree mergedTree;
+    if (root!=nullptr&&other.root!=nullptr) {
+        std::queue<TreeNode*> q1, q2;
+        q1.push(root);
+        q2.push(other.root);
+
+        while(q1.empty()==false&&q2.empty()==false){
+            TreeNode* node1=q1.front();
+            TreeNode* node2=q2.front();
+            q1.pop();
+            q2.pop();
+            mergedTree.insert(node1->val);
+            mergedTree.insert(node2->val);
+
+            if(node1->left!=nullptr){
+                q1.push(node1->left);
+            }
+            if(node1->right!=nullptr){
+                q1.push(node1->right);
+            }
+            if(node2->left!=nullptr){
+                q2.push(node2->left);
+            }
+            if(node2->right!=nullptr){
+                q2.push(node2->right);
+            }
+        }
+    }
+    return mergedTree;
 }
